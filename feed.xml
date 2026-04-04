@@ -1,59 +1,26 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<knowledge_base>
-    <metadata>
-        <generated_at>2026-04-04</generated_at>
-        <author>Gemini</author>
-        <version>1.0</version>
-    </metadata>
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+    <title>Global Recon Feed</title>
+    <link>https://example.com/feed</link>
+    <description>Latest field reports and data logs.</description>
+    
+    <item>
+        <title>Signal Intercept: Sector 7</title>
+        <link>https://example.com/reports/sector-7</link>
+        <description><![CDATA[<p>Unusual frequency spikes detected in the lower quadrants. Recommend immediate investigation.</p>]]></description>
+        <pubDate>Fri, 03 Apr 2026 14:30:00 GMT</pubDate>
+        <guid>98765-alpha</guid>
+        <author>Agent_Orion</author>
+    </item>
 
-    <articles>
-        <article id="101">
-            <title>The Rise of Hydroponics</title>
-            <category>Urban Agriculture</category>
-            <tags>
-                <tag>Sustainability</tag>
-                <tag>Technology</tag>
-            </tags>
-            <content>
-                As city spaces become more restricted, soil-less farming techniques 
-                like hydroponics have moved from niche hobbies to mainstream solutions. 
-                By using nutrient-rich water, these systems use 90% less water than 
-                traditional farming.
-            </content>
-            <rating>4.8</rating>
-            <published>true</published>
-        </article>
-
-        <article id="102">
-            <title>Vertical Forests: High-Rise Habitats</title>
-            <category>Architecture</category>
-            <tags>
-                <tag>Ecology</tag>
-                <tag>Design</tag>
-            </tags>
-            <content>
-                Architects are now integrating thousands of trees and shrubs into 
-                the facades of skyscrapers. These "Vertical Forests" help regulate 
-                building temperatures and filter urban pollutants.
-            </content>
-            <rating>4.5</rating>
-            <published>true</published>
-        </article>
-
-        <article id="103">
-            <title>Community Gardens and Mental Health</title>
-            <category>Social Science</category>
-            <tags>
-                <tag>Wellness</tag>
-                <tag>Community</tag>
-            </tags>
-            <content>
-                Recent studies suggest that residents involved in local community 
-                gardens report a 30% decrease in stress levels. The act of tending 
-                to plants fosters a sense of belonging and environmental stewardship.
-            </content>
-            <rating>4.9</rating>
-            <published>false</published>
-        </article>
-    </articles>
-</knowledge_base>
+    <item>
+        <title>Hardware Update: GFEngine v2.1</title>
+        <link>https://example.com/updates/engine</link>
+        <description>The latest core update improves offline resilience and CORS proxy routing.</description>
+        <pubDate>Thu, 02 Apr 2026 09:15:00 GMT</pubDate>
+        <guid>12345-beta</guid>
+        <author>System_Admin</author>
+    </item>
+</channel>
+</rss>
