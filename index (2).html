@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nulsie | my web</title>
+    <style>
+        :root {
+            --bg: #0a0a0b;
+            --card-bg: #15171a;
+            --accent-green: #2ecc71;
+            --accent-blue: #3498db;
+            --text-main: #e0e0e0;
+            --text-dim: #a0a0a0;
+            --border: #2c2f33;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Calibri', 'Candara', 'Segoe UI', sans-serif;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            padding: 60px 20px;
+        }
+        
+        .inv-banner {
+    width: 100%;
+    height: 120px; 
+    object-fit: cover;
+    border-radius: 4px 4px 0 0;
+    margin: -20px -200px 15px -20px; 
+    width: calc(100% + 40px); 
+}
+
+        /* Ticker Style */
+        .ticker {
+            background: #000;
+            border: 1px solid var(--border);
+            overflow: hidden;
+            white-space: nowrap;
+            padding: 5px 0;
+            margin-bottom: 30px;
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--accent-green);
+        }
+
+        .ticker-content {
+            display: inline-block;
+            animation: marquee 10s linear infinite;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        header {
+            border-left: 4px solid var(--accent-green);
+            padding-left: 20px;
+            margin-bottom: 40px;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            margin: 0;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--accent-green), var(--accent-blue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .motto {
+            font-family: monospace;
+            color: var(--text-dim);
+            margin-top: 5px;
+        }
+
+        section { margin-bottom: 50px; }
+
+        h2 {
+            font-size: 1.2rem;
+            color: var(--accent-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+        
+        
+        .file-list { background: var(--card-bg); border: 1px solid var(--border); border-radius: 8px; padding: 10px; }
+        .file-item { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: center; 
+            padding: 10px; 
+            border-bottom: 1px solid #1e1f22; 
+            font-family: monospace;
+        }
+        .file-item:last-child { border-bottom: none; }
+        .file-name { color: var(--accent-blue); text-decoration: none; }
+        .file-name:hover { text-decoration: underline; }
+        .file-info { color: var(--text-dim); font-size: 0.8rem; }
+        .info-btn {
+            background: #2c2f33;
+            color: var(--text-dim);
+            border: none;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 12px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .info-btn:hover { background: var(--accent-blue); color: #fff; }
+        .file-desc {
+            background: #18191c;
+            margin: 0 15px 12px 15px;
+            padding: 10px;
+            border-radius: 4px;
+            border-left: 3px solid var(--accent-blue);
+            font-size: 0.85rem;
+            color: var(--text-dim);
+            display: none; 
+        }
+
+        p { color: var(--text-main); font-size: 1.05rem; }
+
+        .discord-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #5865F2;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-family: "gg sans", "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+        }
+     .matrix-btn {
+            display: inline-flex;
+            align-items: center;
+            background: #03A062;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 4px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+            font-family: "gg sans", "Whitney", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight: 700;
+     }
+
+        .discord-btn:hover { filter: brightness(1.2); }
+
+        
+        
+
+        .status-tag {
+            display: inline-block;
+            background: rgba(46, 204, 113, 0.1);
+            color: var(--accent-green);
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+
+        footer {
+    margin-top: 100px;
+    text-align: center;
+    font-size: 0.64rem; 
+    color: var(--text-dim);
+    opacity: 0.6; 
+}
+
+        .secret-toggle {
+            cursor: pointer;
+            color: var(--accent-green);
+            text-decoration: underline;
+        }
+     .profile-pic {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-green);
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: 0 0 10px rgba(46, 204, 113, 0.3);
+     }
+     /* --- Interactive Article Cards --- */
+        .article-grid {
+            display: grid;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .article-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-green);
+            border-radius: 6px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .article-card:hover {
+            transform: translateX(5px);
+            border-color: var(--accent-green);
+            box-shadow: 0 4px 15px rgba(46, 204, 113, 0.1);
+        }
+
+        .article-title {
+            color: var(--accent-blue);
+            font-size: 1.25rem;
+            margin: 0 0 10px 0;
+            font-weight: bold;
+        }
+
+        .article-meta {
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            font-family: monospace;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .article-meta span {
+            background: #1c1f24;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border: 1px solid #2c2f33;
+        }
+
+        .article-excerpt {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+
+        .article-actions {
+            display: flex;
+            gap: 10px;
+        }
+
+        .btn-interactive {
+            background: transparent;
+            border: 1px solid var(--accent-blue);
+            color: var(--accent-blue);
+            padding: 6px 14px;
+            border-radius: 4px;
+            cursor: pointer;
+            font-family: monospace;
+            transition: 0.2s;
+            text-decoration: none;
+            font-size: 0.85rem;
+        }
+
+        .btn-interactive:hover {
+            background: var(--accent-blue);
+            color: #fff;
+            box-shadow: 0 0 8px var(--accent-blue);
+        }
+
+        .btn-read-full {
+            border-color: var(--accent-green);
+            color: var(--accent-green);
+        }
+
+        .btn-read-full:hover {
+            background: var(--accent-green);
+            color: #000;
+            box-shadow: 0 0 8px var(--accent-green);
+        }
+
+        .quick-read-content {
+            display: none;
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px dashed var(--border);
+            color: var(--text-dim);
+            font-size: 0.9rem;
+            line-height: 1.6;
+            animation: fadeIn 0.3s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* --- SPA Article System --- */
+        #articles-section { position: relative; min-height: 400px; }
+        
+        .article-grid { display: grid; gap: 15px; }
+
+        .placeholder-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-left: 4px solid var(--accent-green);
+            padding: 20px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .placeholder-card:hover {
+            background: #1c1f24;
+            transform: scale(1.01);
+            border-left-color: var(--accent-blue);
+        }
+
+        .placeholder-card h3 { margin: 0; color: var(--accent-blue); font-size: 1.1rem; }
+        .placeholder-card p { margin: 5px 0 0; font-size: 0.85rem; color: var(--text-dim); }
+
+        /* Full Content View */
+        #article-viewer {
+            display: none;
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            padding: 30px;
+            border-radius: 8px;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .back-btn {
+    background: #2c2f33;
+    color: var(--accent-green);
+    border: 1px solid var(--accent-green);
+    padding: 5px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-family: monospace;
+    display: inline-block;
+    /* This adds space between the article text and the button */
+    margin-top: 25px; 
+}
+
+.back-btn:hover { 
+    background: var(--accent-green); 
+    color: #000; 
+}
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="ticker">
+        <div class="ticker-content">
+            JOIN THE DECENTRALIZED MASS COLLABORATION DEV COMMUNITY I CREATED CALLED <a href="https://gilinet-core.github.io/website" style="color: #ffff00;">GiliNet</a>
+        </div>
+    </div>
+
+    <header>
+     <img src="pfp.jpg" alt="pfp" class="profile-pic">
+        <h1>nulsie</h1>
+        <div <span class="status-tag">Pouring coffee...</span></div>
+    </header>
+    
+    <div <span class="motto">"nulsie":hi</span>
+
+    <section id="bio">
+        <p>just a netizen interested in web development and computer science in general. i spend my time on web development and random fields of cs, or grinds as a die hard trader on dank memer, i'm proficient in the holy trinity of web dev; HTML, CSS and JS and i'm also good at a bunch of other languages.</p>
+        <p>big on computers and the interconnected network(aka internet). mess with cs and write usable(mostly) codes which help. and spend most of my social time on discord.</p>
+        <p>i'm also the founder of GiliNet, a mass decentralized, collaboration community launched to develop, maintain, inspect, decompile and to protect open source projects and security infrastructures.</p>
+    </section>
+
+    <section id="articles-section">
+        <h2>My Writings <img src="connect.gif" style="height:18px;"></h2>
+        <p>This is just my ramblings and writings on the topics i'm interested in.</p>
+        
+        <!-- Interactive List View -->
+        <div id="article-list" class="article-grid">
+            <div class="article-card">
+                <h3 class="article-title">0x01: It's not that hard to make REALLY privacy focused applications.</h3>
+                <div class="article-actions">
+                    <button class="btn-interactive btn-read-full" onclick="openArticle('article1')">Read Output -></button>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <h3 class="article-title">0x02: I made a web client for Bsky.</h3>
+                <div class="article-actions">
+                    <button class="btn-interactive btn-read-full" onclick="openArticle('article2')">Read Output -></button>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <h3 class="article-title">0x03: LycaClient v.1.2 is here.</h3>
+                <div class="article-actions">
+                    <button class="btn-interactive btn-read-full" onclick="openArticle('article3')">Read Output -></button>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <h3 class="article-title">0x04: A Fish CAN Forever.</h3>
+                <div class="article-actions">
+                    <button class="btn-interactive btn-read-full" onclick="openArticle('article4')">Read Output -></button>
+                </div>
+            </div>
+            
+            <div class="article-card">
+                <h3 class="article-title">0x05: Claude leak...</h3>
+                <div class="article-actions">
+                    <button class="btn-interactive btn-read-full" onclick="openArticle('article5')">Read Output -></button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Single Page Viewer (Initially Hidden) -->
+        <div id="article-viewer">
+           
+            <div id="viewer-content">
+                <!-- Content injected via JavaScript -->
+            </div>
+            <button class="back-btn" onclick="closeArticle()">← Back to Index</button>
+        </div>
+    </section>
+
+    <section id="portfolio">
+    <h2>Dev Repo (Source Files) for my Projects<img src="cmd.gif"></h2>
+    <div class="file-list">
+    <div class="file-item">
+            <span>📄 <a href="LycaClient-v.1.2.zip" class="file-name" download>LycaClient v.1.2</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">14.88 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+     </div>
+      <div class="file-desc">This is the v.1.2 of LycaClient, i've added two new features(HLS video support and facet parsing) and made the structure and readability of the code better. License: MIT License</div>
+     <div class="file-item">
+            <span>📄 <a href="LycaClient-v.1.1.zip" class="file-name" download>LycaClient v.1.1</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">14.77 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+     </div>
+      <div class="file-desc">LycaClient is a lightweight, open-source web client for Bluesky. License: MIT License</div>
+   <div class="file-item">
+            <span>📄 <a href="LycaClient-v.Feather.zip" class="file-name" download>LycaClient v.Feather</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">6.43 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+   </div>
+     <div class="file-desc">Feather is the "ultra-light" sibling to the main LycaClient. It is designed specifically for low-resource environments and devices as old as 16 years. The theme, styling and some functions are not as good as the other one which was a compromise for compatibility with older systems. License: MIT License</div>
+        <div class="file-item">
+            <span>📄 <a href="PIES.zip" class="file-name" download>PIES.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">169.19 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">An open source text only encrypted file storage which is completely zero-gapped(Believe me). License: GNU GPL v3</div>
+
+        <div class="file-item">
+            <span>📄 <a href="PIESImages.zip" class="file-name" download>PIESImages.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">149.69 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">An image storage variant of the above PIES, still in development so might have bugs. But the encryption works perfectly(or at least to me). License: GNU GPL v3</div>
+
+        <div class="file-item">
+            <span>📄 <a href="STAN.zip" class="file-name" download>STAN.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">18.42 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">Stakes Analyst, an app for risk management and analysis in stakes, and is pretty good at it. License: MIT License</div>
+
+        <div class="file-item">
+            <span>📄 <a href="FleonCSS.zip" class="file-name" download>FleonCSS.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">29.36 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">A full fledged CSS framework for nice and sharp dark themed neon aesthetic for a website. License: MIT License</div>
+
+        <div class="file-item">
+            <span>📄 <a href="NETENOMICSjs.zip" class="file-name" download>NETENOMICSjs.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">31.05 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">A comprehensive JS Library for internet economics. License: MIT License</div>
+                     <div class="file-item">
+            <span>📄 <a href="FLATBREADjs.zip" class="file-name" download>FLATBREADjs.zip</a></span>
+            <div style="display: flex; align-items: center; gap: 10px;">
+                <span class="file-info">1.54 KB</span>
+                <button class="info-btn" onclick="toggleDesc(this)">i</button>
+            </div>
+        </div>
+        <div class="file-desc">A JS Library for an easier insertion and management of GIF buttons in websites. It's in development alright. License: MIT License</div>
+    </div>
+     <p>If you want to see the files without downloading them, go to my GitHub repo containing all the files of all my projects: <a href="https://github.com/nulsie/DevRepoComplete">DevRepoComplete</a></p>
+</section>
+
+    <section id="socials">
+        <h2>Comm-Link <img src="connect.gif"></h2>
+        <p>Contact me only by Discord or Matrix. Don't look forward on contacting me anywhere else.</p>
+        <a href="https://discord.com/users/1453406605461815430" class="discord-btn">Discord</a>
+        <a href="https://matrix.to/#/@nulsie:matrix.org" class="matrix-btn">Matrix</a>
+    </section>
+
+    <a href="https://nulsie.github.io/w">
+  <img src="btn.png">
+    </a>
+
+    <footer>
+        <p>Built with Fleon CSS</p>
+    </footer>
+</div>
+
+<script>
+
+    function toggleInv() {
+        const inv = document.getElementById('inv-display');
+        inv.style.display = inv.style.display === 'none' ? 'block' : 'none';
+    }
+    function toggleDesc(btn) {
+        
+        const parentItem = btn.closest('.file-item');
+        
+        
+        const desc = parentItem.nextElementSibling;
+        
+        if (desc && desc.classList.contains('file-desc')) {
+            const isVisible = desc.style.display === 'block';
+            
+            
+            desc.style.display = isVisible ? 'none' : 'block';
+            
+            
+            btn.style.background = isVisible ? '#2c2f33' : 'var(--accent-blue)';
+            btn.style.color = isVisible ? 'var(--text-dim)' : '#fff';
+        }
+    }
+ const responses = [
+    "%c YES. %c The market trends agree.",
+    "%c NO. %c Liquidate your positions immediately.",
+    "%c MAYBE. %c The alpha is currently redacted.",
+    "%c CERTAINLY. %c High-velocity gains detected.",
+    "%c DOUBTFUL. %c Status: Bag-holding imminent."
+];
+
+const styles = [
+    "color: #2ecc71; font-weight: bold; background: #111; padding: 2px 5px;", // Green
+    "color: #e74c3c; font-weight: bold; background: #111; padding: 2px 5px;", // Red
+    "color: #f1c40f; font-weight: bold; background: #111; padding: 2px 5px;", // Yellow
+    "color: #3498db; font-weight: bold; background: #111; padding: 2px 5px;", // Blue
+    "color: #9b59b6; font-weight: bold; background: #111; padding: 2px 5px;"  // Purple
+];
+
+
+window.f8ball = new Proxy({}, {
+    get: function(target, prop) {
+        
+        const question = prop.replace(/_/g, ' ') + "?";
+        const randomIndex = Math.floor(Math.random() * responses.length);
+        const [answerText, metaText] = responses[randomIndex].split(' %c ');
+
+        console.log(`%c 🎱 FLEON ORACLE: %c ${question}`, "color: white; font-weight: bold;", "color: #888;");
+        console.log(answerText + " %c " + metaText, styles[randomIndex], "color: #aaa; font-style: italic;");
+        
+        return "--- fleon.js oracle output ---";
+    }
+});
+ 
+const webringData = [
+    { name: "Lili", niche: "Idk myself, i think cats, anyway she hates dogs", url: "https://lili.lgbt " },
+    { name: "Dominique aka sdomi", niche: "reverse-engineering, networks, electronics, osdev, and retrocomputing", url: "https://sdomi.pl " },
+    { name: "CozyNet", niche: "Random Stuff", url: "https://cozynet.org " },
+    { name:"760ceb3b9c0ba4872cadf3ce35a7a494", niche: "rlly idk", url: "https://760ceb3b9c0ba4872cadf3ce35a7a494.neocities.org/ " },
+    { name: "Famfo", niche: "Computer talk", url: "https://famfo.xyz " }, 
+    { name: "Lina", niche: "Exposé", url: "https://lina.sh " }, 
+    { name: "Fabi", niche: "Dev stuff", url: "https://coinflipcoder.dev " }, 
+    { name: "BlueFox", niche: "Hacking", url: "https://rexbluefox.dev " }, 
+    { name: "Lilly Schramm", niche: "Web Development and some other web stuff ig", url: "https://eps-dev.de " }
+];
+
+ 
+Object.defineProperty(window, 'net', {
+    get: function() {
+        
+        return new Proxy({}, {
+            get: (target, prop) => {
+                if (prop === 'list') {
+                    console.clear();
+                    console.log("%c NEON WEBRING | ACTIVE NODES ", "color: white; background: #3498db; font-weight: bold; padding: 2px 5px;");
+                    console.table(webringData);
+                    console.log("%c Type 'net.random' to jump to a random node.", "color: #888; font-style: italic;");
+                    return "--- Directory Output Complete ---";
+                }
+                if (prop === 'random') {
+                    const randSite = webringData[Math.floor(Math.random() * webringData.length)];
+                    console.log(`%c Redirecting to: ${randSite.name}...`, "color: #2ecc71; font-weight: bold;");
+                    setTimeout(() => window.open(randSite.url, '_blank'), 1000);
+                    return `Jumping to ${randSite.niche}...`;
+                }
+                return undefined;
+            }
+        });
+    },
+    configurable: true,
+    enumerable: false
+});
+
+
+Object.defineProperty(window, 'net', {
+    get: function() {
+        return new Proxy({}, {
+            get: (target, prop) => {
+                
+                if (prop === 'list') {
+                    console.log("%c NEON WEBRING | ACTIVE NODES ", "color: white; background: #3498db; font-weight: bold; padding: 2px 5px;");
+                    console.table(webringData);
+                    return "--- Directory Output Complete ---";
+                }
+
+                
+                if (prop === 'hack') {
+                    console.warn("CRITICAL: INITIATING OVERRIDE PROTOCOL...");
+                    
+                    let progress = 0;
+                    const interval = setInterval(() => {
+                        progress += 20;
+                        console.log(`%c [SYSTEM] Hacking mainframes... ${progress}%`, "color: #2ecc71; font-family: monospace;");
+                        
+                        if (progress >= 100) {
+                            clearInterval(interval);
+                            console.log("%c [SUCCESS] ACCESS GRANTED. REDIRECTING TO SOURCE... ", "color: white; background: #e74c3c; font-weight: bold;");
+                            
+                            
+                            setTimeout(() => {
+                                window.location.href = "https://www.reddit.com/r/memes/comments/d9xbez/youve_been_fooled/";
+                            }, 1000);
+                        }
+                    }, 400);
+
+                    return "Bypassing firewalls... please wait.";
+                }
+
+                
+                if (prop === 'random') {
+                    const site = webringData[Math.floor(Math.random() * webringData.length)];
+                    window.open(site.url, '_blank');
+                    return `Jumping to ${site.name}`;
+                }
+             if (prop === 'textbased') {
+    const destination = "https://nulsie.github.io/text";
+    console.log(`%c U r going to the text based version of this site ${destination}...`, "color: #3498db; font-weight: bold;");
+   
+    setTimeout(() => {
+        window.location.href = destination;
+    }, 800);
+    
+    return "Redirecting...";
+             }
+            }
+        });
+    },
+    configurable: true
+});
+ function toggleArticle(btn) {
+        const card = btn.closest('.article-card');
+        const content = card.querySelector('.quick-read-content');
+        
+        if (content.style.display === 'block') {
+            content.style.display = 'none';
+            btn.textContent = 'Quick Read';
+            card.style.borderLeftColor = 'var(--accent-green)';
+        } else {
+            content.style.display = 'block';
+            btn.textContent = 'Collapse';
+            // Shifts the neon accent to blue when actively reading
+            card.style.borderLeftColor = 'var(--accent-blue)'; 
+        }
+    }
+    // Article Database Object - Fill your content here!
+    const articleDB = {
+        article1: {
+            title: "It's not that hard to make REALLY privacy focused applications.",
+            date: "2026 Feb 12",
+            content: `<p>Lately I'm seeing a lot, like I mean a lot of privacy and security related applications going extinct, I'm not talking about the normal stuff owned by for-profits which just say 'privacy focused' but actually useful apps and software created by a bunch of cyber junkies for cyber junkies, well i guessed that the reason was funding and donations drying up, but when i did some more digging i found that, the primary reason is not money but SIMPLY THAT IT'S NOT "FEASIBLE", like i was just dumbfounded, that developers just stopped getting more aware of privacy because its just not feasible.</p>
+                      <p>So to see how difficult it was to make an actual privacy focused app in the present and to see if the developers are just lazy, i started making a web based encryption storage system.</p>
+                      <p>At first it was easy, I made the plan; to make a really isolated storage app in the web which nobody could poke into.</p>
+                      <p>I divided my project into 5 phases, the first one was ofcourse the usual one of laying the foundation and the concept, I wanted the app to be completely air-gapped, so my plan was to manually download the libraries needed and make it work flawlessly offline. I used Tailwind for a custom 'Mac OS 8/9 Platinum' style, I really don't know why i chose that but it looked retro and good, then I chose the <code>CryptoJS</code> library for the data encryption and authentication, for storage i was using thd browser's <code>localStorage</code> as it was ideal enough for the project and remember that all of these was free amd open source and coud be downloaded from almost anywhere on the internet. First i planned that the whole app aas going to be an SPA(Single Page Application) so i could already patch up a surprising number of vulnerabilities, and as it already was completely offline based, i had made it nearly impossible for anybody to remotely hack it. And i made the basic version of the app, with a login tab and a registration tab, i purposefully removed the back up option to not make a security/privacy backdoor hence again removing another common vulnerability and also making the app easier to develop. I used AES-256 for the encryption of the data stored and used SHA-256 for the hashing of all the credentials,  for the passkey, i used the same hashing but layered with PBKDF2 with 100000 iterations hence again preventing brute force attacks, and it has only been a day of work. Next i added a feature called the Volatile Random Access Memory Purge(VRAMP) which when logged out would wipe the entire credential entered clean and overwrites the wiped memory with random noise which are separately generated through the <code>window.crypto.getRandomValues</code> feature of the CryptoJS library. After this i created the very espionage-esque feature of a 'Duress Passkey', a secondary passkey set during registration, and if this is entered duting log in, the system silently wipes the entire data stored in the given user's vault, saves the empty state and logs the user(or the interrogator) in. It appears as a legit log in but actually the data is purged, and this was done through very simple lines of code.</p>
+                      <p>And with a bunch of other features, i made a pretty powerful and secure text based storage(as in the end i thought, a hybrid storage of both text and images could open up new vulnerabilities) system called PIES or Pretty Isolated and Encrypted Software(it's on the dev repo) which was completely zero gapped amd could be text based storage apps which normies like us could get our hands on(only if used correctly), and this all happened in a matter of a week, so now i proved that it's not that hard to make a very privacy focused tool or is it unfeasible as in this world where you could be tracked or hacked in a matter of minutes, with the right tools you can stay safe, and also a big deemed problem by the devs is that making some systems could get the devs themselves in jeopardy on matters like illicit users(which are just excuses used by entities for mass surveillance), but with this app where there is no server collecting data or anything pinging anyone other user storing data, nobody can practically subpoena me to give up info, as i'm legally not binded to, hence stripping myself of my 'responsibilities' so look in this way, was this even expensive or even time consuming, no it was not. So just make more privacy focused apps.</p>`
+        },
+        article2: {
+            title: "I made a web client for Bsky.",
+            date: "2026 March 10",
+            content: `<p>So i just started using Bluesky after i just toyed on using it or not, but with my hate for the data harvesters also called Instagram, TikTok etc. made me use Bluesky./p>
+                <p>After a bit of usage, I started to like Bluesky, but i still didn't like that it had the suggestions tab and used analytics(something that i hate a lot and is the primary reason for my loath towards the data harvesters), so i planned to make a client for Bsky in the holy trinity of web dev.</p>
+                <p>The final product of a coding streak for this aim which lasted for three days was LycaClient, it was a full feature web based client in which there was no 'for you' tab or a suggestions feed but only the immediate settings and a search bar, so you would just search up for people who you want to see without a distraction from a third entity amd that you had control of who you wanted to look up for and algorithm wouldn't be there to breathing down your neck. And it did a great job in being a great client.</p>
+                <p>I didn't use any fancy frameworks or integrations for these as i really hate bloat, and used pure HTML5, CSS and Vanilla JS(ES6+). I used the Bluesky XRPC for the real-time integration and for the user sign  and used the Fetch API for the data pulling. You can just check on the specs by just going to the <a href="https://github.com/nulsie/LycaClient"></a>GitHub repo. Itvwas actually really simple and as Bsky uses the ATProto it was completely open source and free and naturally, dApps like Bsky are way more friendly with data fetching than the data harvesters because of the open source ATProto and the whole project was way easier than it looked</p>
+                <p>And as I was coding i also had an idea to create a 'Feather' version which could be compatible with older systems and as I aas finished with the main version(v.1.1) I started with the development of Feather and in a day or so I had finished that too and the Feather version, when I checked could be used in systems as old as 16 years.</p>
+                <p>And with this, I pushed the code for both versions and now i'm on my way on working on something else, and I'm planning on adding video feed features and better richText formatting which currently is not there in v.1.1.</p>`
+        },
+        article3: {
+            title: "LycaClient v.1.2 is here.",
+            date: "2026 March 15",
+            content: `<p>Hey, the v.1.2 is here with all the updates. And I've added two new features.</p>
+            <p>After v.1.1, the v.1.2 was obviously a bit more effort-heavy, as adding the richText formatting was a bit of a headache, because Bsky uses UTF-16 for its formatting while the normal web uses UTF-8 so i had to come up with a good parser for it, bit still it was way easier than anything i had done before, i had also added the video support for posts and good for devs, i had also made the overall code a bit more readable than before.</p>
+            <p>I had done the transformation of UTF-16 format to UTF-8 through a parser which took most of the development time of the v.1.2. The video support was surprisingly easier as I only had to use the HLS.js library to import the feature and it was pretty good then. So overall the v.1.2 is looking 'professionally' good.</p>`
+        },
+        article4: {
+            title: "A Fish CAN forever.",
+            date: "2026 March 31",
+            content: `<p>After spending some time with some guys who works on IPFS(Inter-Planetery File System), I got an idea to create a something for it, a file transferring system easy enough for a person who knows the basics but actually a really sophisticated and security heavy system under the hood.</p>
+            <p>So i had known about the IPFS project for lng time but had never done much of value for it even if i'm very interested in dApps and decentralized systems. So i planned as usual to do something. File transferring systems are abundant when it comes to IPFS but what i created was something which was more than a usual one. And in the end I created what I call a hybridized system which is just a partially deccentralized system.</p>
+            <p>I called it EtCAN or the Eternal Content Addressable Network, amd here a user will generate a private and a public key as a form of identity (like PGP) and uses the reciever user's public key to send the data and vice versa and this was the concept, I used the battle tested TweetNaCl library as my cryptographic base. Curve25519 was used for <code>nacl.box</code> operations, and this provided pretty high speed, eliptic-curve based encryption for the assymetric encryption. And for the symmetric encryption i used the XSalsa20-Poly1305 for the local data(contacts, config, and the secret key) using a master password. i then used the PBKDF2-HMAC-SHA256 with 600000 iterations which was the OWASP recommended standard.</p>
+            <p>But what made it better was that it had a pretty high level security and privacy feature other than the encryption, it had a pretty well performing steganography engine built in it which was pretty good at the job and used the scattered LSB technique with a deterministic PRNG(Mulberry32) seeded by a random 32-but integer hidden in the first 32 pixels. And Instead of writing bits sequentially (which creates a visible "noise" pattern at the top of an image), it scatters the payload across the image's Least Significant Bits (LSB). It also forced Alpha channels to 255 to prevent data loss during transmission or the canvas rendering, and all this made this better than a lot of the same type applications. And this was also pretty easy as the hard part was actually a pretty expected one.</p>
+            <p>As it presented itself the hardest part actually was finding the 'pinning' service, so i started with supporting the Pinata JWT but for a complete decentralization this was not ideal as it would only maks the app partially decentralized, so i dabbled a bit with the Crust network but for some reason whenever i typed keys and credentials, it was always malformed for some reason so because of this i ended up with a partially decentralized applications, and i dabled with a lot of other ones but didn't work at all even though i digged deep enough and was just searching for a good pinning service for hours, i don't know why but for some reason none like i mean NONE worked amd using the self hosting option just broke the thing so there i was, <i>a fish CAN forever</i>. so I'll keep it Pinata till i find a good alternative but it's not actually a big deal as with the steganography and the encryption Pinata doesn't have anyway of surveillance as they will only see encrypted blobs lf data and seemingly normal images going through, so keeping it like this or changing doesn't change much. of the practice. And also that i added multiple gateway system in the downloading of the files which made it a bit more decentralized.</p>
+            <p>The next big feature i added was the feature of uploading entire directories of websites for mirroring or distributing them, and i used the v1 of CID as it was the version good for site upload as it didn't need encryption. And with this features I think i have an actual high quality and sophisticated file transferring system, and please let messsage me on Matrix or something of you find a nice pinning service.</p>`
+        },
+        article5: {
+            title: "Claude leak...",
+            date: "2026 April 1",
+            content: `<p>Like i don't know what to say, could this be worth millions, i don't know. So i woke up or something like that in the morning, i didn't get any wind at first as i'm not an AI guy or was i free. So I was not having a clue for about 2 hours, but then i got the news from a server in Discord, i was surprised to say the least, as even if i wad not an AI guy, i was still knowledgeable about Claude and it's popularity, and to see the source code literally online for free was just otherworldly, but at the same time something like this already had a chance of happening as it had happened before, yeah with claude itself in 2025 February on Claude's launch day or something(reference from Dave Shoemaker) but when compared to this, that was nothing, because here almost everything of the orchestration logic of Claude 4.6 was leaked.</p>
+            <p>And when i <b>dug</b> deeper, the whole thing looked stupid, it was that the map file for the version 2.1.88 had all the source code needed for every file within a <code>sourcesContent</code> array, and with this anybody could just run a simple script to map all the files and all the 512000 lines of Anthropic's original code in TypeScript. And all this happened just with the npm package for the 2.1.88 which had accidentally included these source files. So all of this was just behind a command like <code>npm publish --access public</code>  and such a simple error(or a 'human error' as quoted by Anthropic) could cause this mayhem(only for the company as i'm happy with this data harvester getting hit hard).</p>
+            <p>So the reception and response to this breach was your usual stuff, Anthropic was hit hella hard by the media amd everyone concerned. The leak was first found by a developer/security researcher by the name of Chaofan Shou who at approximately 4:23 AM (ET) on 31 March found this leak and posted about itbon X(@Fried_rice), and he provided a direct download link to the original expoaed source code in TypeScript hosted on Anthropic's Cloudflare R2 bucket (which by this time would be have been taken down), but then soon, a prominent Korean researcher who goes in the interconnected network by the name of Sigrid Jin published a Python-ised version of the source code under a new name of 'Claw-Code' on GitHub and boy, that repo bece the fastest growing GitHub repo of all time and by now mostly be having more than 160000 stars on GitHub.</p>
+            <p>But you guys be careful as some guys(idbzoomh1) has published repos with names like 'Leaked Claude Code' which was actually a lure attack containing Vidar. So i suggest you guys to download the Claw-Code instead of anything which looks suspicious on GitHub amd says stupid stuff like it offers 'enterprise features'.</p>
+            <p>The code was immediately analysed by devs, and the result was both expected and surprising, people found a some new features which was in beta or was unreleased like a feature called <strong>Buddy</strong> which was tamagotchi style companion, and a continuously used term in the code called <strong>KAIROS</strong> which was likely an always-on agent mentioned in the code nearly 150 times, according to the code it acts proactively in the background, responding to GitHub webhooks or Slack messages. It also had some questionable features like the telemetry and 'kill switch', which showed that the CLI tool polls an Anthropic settings endpoint every hour. This allows the company to remotely toggle feature "kill-switches" and push policy changes to your local running instance without your direct interaction. But it was expected as for an AI company which would do anything to harvest your data. The code also had some info on some upcoming models(names like Capybara and Fennec).</p>
+            <p>When i audited the code when i was free, it was not a magic box that everyone said it was but more like a really normal source code for a pretty powerful agent. So i was not necessarily surprised by the features but was surely surprised on the scale of the breach and how much have gone public domain.</p>
+            <p>And in the middle of this breach some people had used it as a pretty vile opportunity to do some cyber mischief as a bunch of fake repos have popped up in GitHub offering the 'leaked code' which will instead infect your device with something like Vidar and a pretty large scale npm poisoning attack happened in which the users who have downloaded the update(2.1.88) on 31 between 00:21 and 03:29 UTC might have had a chance of inadvertently pulling a Remote Access Trojan(RAT) ware. But cmon, why all this on March 31st, it would've been perfect if it was the April 1st.</p>`
+        }
+    };
+
+    function openArticle(id) {
+        const article = articleDB[id];
+        const list = document.getElementById('article-list');
+        const viewer = document.getElementById('article-viewer');
+        const content = document.getElementById('viewer-content');
+
+        if (article) {
+            content.innerHTML = `
+                <h1 style="background:none; -webkit-text-fill-color: var(--accent-blue); font-size: 1.8rem;">${article.title}</h1>
+                <div style="font-family:monospace; color:var(--accent-green); margin-bottom:20px;">[PUBLISHED: ${article.date}]</div>
+                <div class="article-body" style="color:var(--text-main)">${article.content}</div>
+            `;
+            list.style.display = 'none';
+            viewer.style.display = 'block';
+            window.scrollTo({ top: document.getElementById('articles-section').offsetTop - 20, behavior: 'smooth' });
+        }
+    }
+
+    function closeArticle() {
+        document.getElementById('article-list').style.display = 'grid';
+        document.getElementById('article-viewer').style.display = 'none';
+    }
+</script>
+
+</body>
+</html>
